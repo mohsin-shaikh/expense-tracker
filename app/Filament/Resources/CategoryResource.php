@@ -10,6 +10,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
+use Illuminate\Database\Eloquent\Builder;
 
 class CategoryResource extends Resource
 {
@@ -23,8 +25,8 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required(),
+                // Forms\Components\TextInput::make('user_id')
+                //     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -46,7 +48,8 @@ class CategoryResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                //
+                Filter::make('is_active')
+                    ->query(fn (Builder $query): Builder => $query->where('is_active', true))
             ]);
     }
 

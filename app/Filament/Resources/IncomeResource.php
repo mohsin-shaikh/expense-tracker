@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\Category;
 
 class IncomeResource extends Resource
 {
@@ -23,14 +24,15 @@ class IncomeResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required(),
-                Forms\Components\TextInput::make('category_id')
-                    ->label('Category')
-                    ->required(),
+                // Forms\Components\TextInput::make('user_id')
+                //     ->required(),
                 Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
+                ->required()
+                ->maxLength(255),
+                Forms\Components\BelongsToSelect::make('category_id')
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->required(),
                 Forms\Components\DatePicker::make('entry_date')
@@ -44,8 +46,7 @@ class IncomeResource extends Resource
             ->columns([
                 // Tables\Columns\TextColumn::make('user_id'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('category_id')
-                    ->label('Category'),
+                Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('entry_date')
                     ->label('Entry Date')
