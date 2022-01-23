@@ -34,6 +34,8 @@ class IncomeResource extends Resource
                     ->searchable()
                     ->required(),
                 Forms\Components\TextInput::make('amount')
+                    ->numeric()
+                    ->minValue(1)
                     ->required(),
                 Forms\Components\DatePicker::make('entry_date')
                     ->required(),
