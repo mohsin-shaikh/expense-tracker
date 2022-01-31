@@ -1,6 +1,6 @@
 # Expense Tracker
 
-> This is a simple expense tracker app build with Filament Admin (TALL Stack).
+> This is a simple Expense Tracker app build with [Filament Admin](https://github.com/laravel-filament/filament) ([TALL Stack](https://tallstack.dev/)).
 
 ![alt text](./public/preview.png)
 
