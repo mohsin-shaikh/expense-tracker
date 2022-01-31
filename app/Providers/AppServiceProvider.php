@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Filament::registerNavigationGroups([
             'Income/Expense',
-            'Extra',
+            'Miscellaneous',
         ]);
     }
 }

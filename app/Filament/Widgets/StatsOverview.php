@@ -23,7 +23,7 @@ class StatsOverview extends BaseWidget
             Card::make('Total Income', '₹ ' . $this->total_income),
             Card::make('Total Expense', '₹ ' . $this->total_expense),
             Card::make('Total Revenue', '₹ ' .  $this->total_revenue)
-                ->description($this->total_revenue > 0 ? 'Increasing' : 'Decreasing')
+                ->description($this->total_revenue > 0 ? 'Profit' : 'Loss')
                 ->descriptionIcon($this->total_revenue > 0 ? 'heroicon-s-trending-up' : 'heroicon-s-trending-down')
                 ->color($this->total_revenue > 0 ? 'success' : 'danger'),
         ];

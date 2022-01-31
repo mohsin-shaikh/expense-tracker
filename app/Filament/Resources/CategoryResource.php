@@ -19,7 +19,7 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Extra';
+    protected static ?string $navigationGroup = 'Miscellaneous';
 
     public static function form(Form $form): Form
     {

@@ -3,7 +3,11 @@
 
 ## About Expense Tracker
 
-This is a simple expense tracker application.
+This is a simple expense tracker application built with Filament Admin.
+
+## Preview
+
+![alt text](./public/preview.png)
 
 ## License
 
