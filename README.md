@@ -4,6 +4,14 @@
 
 ![alt text](./public/preview.png)
 
+## TODO
+
+- [x] Income Resource
+- [x] Expenses Resource
+- [x] Category Resource
+- [x] Profile Page
+- [ ] Dynamic Currency symbol on Dashboard Widget
+
 ## Installation
 
 Clone the repo locally:
