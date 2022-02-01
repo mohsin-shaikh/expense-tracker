@@ -13,6 +13,8 @@
 - [x] Register Page (Livewire Component)
 - [x] Profile Page
 - [x] Dynamic Currency symbol on Dashboard Widget
+- [x] Default Currency and Country on User Register 
+- [ ] Report
 
 ## Installation
 

@@ -15,7 +15,8 @@ class StatsOverview extends BaseWidget
     protected int $total_revenue = 0;
 
     protected function formatAmount ($value) {
-        return Currency::find(auth()->user()->currency)->format($value, true);
+        $currency = auth()->user()->currency ? auth()->user()->currency : 'usd';
+        return Currency::find($currency)->format($value, true);
     }
 
     protected function getCards(): array

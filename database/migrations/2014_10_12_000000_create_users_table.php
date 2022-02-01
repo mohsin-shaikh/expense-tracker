@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('website')->nullable();
             $table->text('about')->nullable();
-            $table->string('currency')->nullable();
-            $table->string('country')->nullable();
+            $table->string('currency')->default('usd');
+            $table->string('country')->default('us');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
