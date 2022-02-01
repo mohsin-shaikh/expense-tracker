@@ -12,7 +12,7 @@
 - [x] Dashboard
 - [x] Register Page (Livewire Component)
 - [x] Profile Page
-- [ ] Dynamic Currency symbol on Dashboard Widget
+- [x] Dynamic Currency symbol on Dashboard Widget
 
 ## Installation
 
