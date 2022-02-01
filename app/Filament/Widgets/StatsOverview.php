@@ -6,12 +6,17 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 use App\Models\Income;
 use App\Models\Expense;
+use Squire\Models\Currency;
 
 class StatsOverview extends BaseWidget
 {
     protected int $total_income = 0;
     protected int $total_expense = 0;
     protected int $total_revenue = 0;
+
+    protected function formatAmount ($value) {
+        return Currency::find(auth()->user()->currency)->format($value, true);
+    }
 
     protected function getCards(): array
     {
@@ -20,9 +25,9 @@ class StatsOverview extends BaseWidget
         $this->total_revenue = $this->total_income - $this->total_expense;
 
         return [
-            Card::make('Total Income', '₹ ' . $this->total_income),
-            Card::make('Total Expense', '₹ ' . $this->total_expense),
-            Card::make('Total Revenue', '₹ ' .  $this->total_revenue)
+            Card::make('Total Income', $this->formatAmount($this->total_income)),
+            Card::make('Total Expense', $this->formatAmount($this->total_expense)),
+            Card::make('Total Revenue', $this->formatAmount($this->total_revenue))
                 ->description($this->total_revenue > 0 ? 'Profit' : 'Loss')
                 ->descriptionIcon($this->total_revenue > 0 ? 'heroicon-s-trending-up' : 'heroicon-s-trending-down')
                 ->color($this->total_revenue > 0 ? 'success' : 'danger'),
