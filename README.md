@@ -6,9 +6,11 @@
 
 ## TODO
 
-- [x] Income Resource
-- [x] Expenses Resource
-- [x] Category Resource
+- [x] Income
+- [x] Expenses
+- [x] Category
+- [x] Dashboard
+- [x] Register Page (Livewire Component)
 - [x] Profile Page
 - [ ] Dynamic Currency symbol on Dashboard Widget
 
