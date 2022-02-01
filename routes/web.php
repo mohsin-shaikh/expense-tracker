@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('auth.register');
 });
+
+Route::get('/admin/register', \App\Http\Livewire\Register::class)->name('auth.register');

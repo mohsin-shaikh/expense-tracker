@@ -38,6 +38,7 @@ class RecentActivity extends Widget implements Tables\Contracts\HasTable
             Tables\Columns\TextColumn::make('subject.category.name')
                 ->label('Category'),
             Tables\Columns\TextColumn::make('subject.amount')
+                ->extraAttributes(['class' => 'text-right'])
                 ->getStateUsing(fn ($record): string => '₹ ' . $record->subject->amount)
                 ->label('Amount'),
             Tables\Columns\TextColumn::make('subject.entry_date')
