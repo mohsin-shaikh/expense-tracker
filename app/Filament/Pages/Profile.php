@@ -2,13 +2,13 @@
 
 namespace App\Filament\Pages;
 
-use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
+use Squire\Models\Currency;
+use Squire\Models\Country;
 
 class Profile extends Page implements HasForms
 {
@@ -69,33 +69,48 @@ class Profile extends Page implements HasForms
     protected function getFormSchema(): array
     {
         return [
-            Section::make('General')
+            Forms\Components\Section::make('Personal Information')
                 ->columns(2)
                 ->schema([
-                    TextInput::make('name')
+                    Forms\Components\TextInput::make('name')
                         ->required(),
-                    TextInput::make('email')
+                    Forms\Components\TextInput::make('email')
                         ->label('Email Address')
                         ->required(),
+
                 ]),
-            Section::make('Update Password')
+            Forms\Components\Section::make('Configuration')
                 ->columns(2)
                 ->schema([
-                    TextInput::make('current_password')
+                    Forms\Components\Select::make('currency')
+                        ->searchable()
+                        ->getSearchResultsUsing(fn (string $query) => Currency::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
+                        ->getOptionLabelUsing(fn ($value): ?string => Currency::find($value)?->name)
+                        ->required(),
+                    Forms\Components\Select::make('country')
+                        ->searchable()
+                        ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
+                        ->getOptionLabelUsing(fn ($value): ?string => Country::find($value)?->name)
+                        ->required(),
+                ]),
+            Forms\Components\Section::make('Update Password')
+                ->columns(2)
+                ->schema([
+                    Forms\Components\TextInput::make('current_password')
                         ->label('Current Password')
                         ->password()
                         ->rules(['required_with:new_password'])
                         ->currentPassword()
                         ->autocomplete('off')
                         ->columnSpan(1),
-                    Grid::make()
+                    Forms\Components\Grid::make()
                         ->schema([
-                            TextInput::make('new_password')
+                            Forms\Components\TextInput::make('new_password')
                                 ->label('New Password')
                                 ->password()
                                 ->rules(['confirmed'])
                                 ->autocomplete('new-password'),
-                            TextInput::make('new_password_confirmation')
+                            Forms\Components\TextInput::make('new_password_confirmation')
                                 ->label('Confirm Password')
                                 ->password()
                                 ->rules([

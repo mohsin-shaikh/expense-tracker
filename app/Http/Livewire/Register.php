@@ -12,8 +12,8 @@ use Filament\Facades\Filament;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
-use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
 class Register extends Component implements HasForms
 {
@@ -23,7 +23,12 @@ class Register extends Component implements HasForms
     public $name = '';
     public $email = '';
     public $password = '';
-    public string $passwordConfirmation = '';
+    public $passwordConfirmation = '';
+
+    public function mount(): void
+    {
+        $this->form->fill();
+    }
 
     public function updatedEmail(): void
     {
@@ -36,7 +41,7 @@ class Register extends Component implements HasForms
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
-            $this->addError('email', __('filament::login.messages.throttled', [
+            $this->addError('email', __('filament::register.messages.throttled', [
                 'seconds' => $exception->secondsUntilAvailable,
                 'minutes' => ceil($exception->secondsUntilAvailable / 60),
             ]));

@@ -16,7 +16,7 @@
             </x-filament::button>
 
             <div class="w-full flex justify-center">
-                <a href="{{ route('filament.auth.login') }}" class="text-gray-600 hover:text-gray-800">
+                <a href="{{ route('filament.auth.login') }}" class="text-gray-600 hover:text-primary-500 focus:outline-none focus:underline">
                     {{ __('register.links.login.label') }}
                 </a>
             </div>
