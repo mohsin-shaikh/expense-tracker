@@ -16,7 +16,8 @@ class RecentActivity extends Widget implements Tables\Contracts\HasTable
 
     protected int | string | array $columnSpan = 'full';
 
-    protected function formatAmount ($value) {
+    protected function formatAmount($value)
+    {
         $currency = auth()->user()->currency ? auth()->user()->currency : 'usd';
         return Currency::find($currency)->format($value, true);
     }

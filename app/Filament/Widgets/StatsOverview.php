@@ -14,7 +14,8 @@ class StatsOverview extends BaseWidget
     protected int $total_expense = 0;
     protected int $total_revenue = 0;
 
-    protected function formatAmount ($value) {
+    protected function formatAmount($value)
+    {
         $currency = auth()->user()->currency ? auth()->user()->currency : 'usd';
         return Currency::find($currency)->format($value, true);
     }
@@ -29,9 +30,9 @@ class StatsOverview extends BaseWidget
             Card::make('Total Income', $this->formatAmount($this->total_income)),
             Card::make('Total Expense', $this->formatAmount($this->total_expense)),
             Card::make('Total Revenue', $this->formatAmount($this->total_revenue))
-                ->description($this->total_revenue > 0 ? 'Profit' : 'Loss')
-                ->descriptionIcon($this->total_revenue > 0 ? 'heroicon-s-trending-up' : 'heroicon-s-trending-down')
-                ->color($this->total_revenue > 0 ? 'success' : 'danger'),
+            // ->description($this->total_revenue > 0 ? 'Profit' : 'Loss')
+            // ->descriptionIcon($this->total_revenue > 0 ? 'heroicon-s-trending-up' : 'heroicon-s-trending-down')
+            // ->color($this->total_revenue > 0 ? 'success' : 'danger'),
         ];
     }
 }
