@@ -10,9 +10,9 @@ use Squire\Models\Currency;
 
 class StatsOverview extends BaseWidget
 {
-    protected int $total_income = 0;
-    protected int $total_expense = 0;
-    protected int $total_revenue = 0;
+    protected float $total_income = 0;
+    protected float $total_expense = 0;
+    protected float $total_revenue = 0;
 
     protected function formatAmount($value)
     {

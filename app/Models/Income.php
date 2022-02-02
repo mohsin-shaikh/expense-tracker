@@ -86,8 +86,8 @@ final class Income extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function TotalIncome(): int
+    public function TotalIncome(): float
     {
-        return intval($this->where('user_id', auth()->user()->id)->sum('amount'));
+        return floatval($this->where('user_id', auth()->user()->id)->sum('amount'));
     }
 }

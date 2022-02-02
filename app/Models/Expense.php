@@ -86,8 +86,8 @@ final class Expense extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function TotalExpense(): int
+    public function TotalExpense(): float
     {
-        return intval($this->where('user_id', auth()->user()->id)->sum('amount'));
+        return floatval($this->where('user_id', auth()->user()->id)->sum('amount'));
     }
 }
