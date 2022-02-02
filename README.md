@@ -4,17 +4,21 @@
 
 ![alt text](./public/preview.png)
 
-## TODO
+## Features
 
-- [x] Income
-- [x] Expenses
-- [x] Category
-- [x] Dashboard
-- [x] Register Page (Livewire Component)
-- [x] Profile Page
-- [x] Dynamic Currency symbol on Dashboard Widget
-- [x] Default Currency and Country on User Register 
-- [ ] Report
+- Income
+- Expenses
+- Category
+- Dashboard
+- Profile
+- StatOverview Widget
+- Recent Activity Widget
+- Register (Livewire Component)
+
+## Upcoming Features
+
+- Setup Default Categories for new users
+- Report (Monthly, Yearly, Custom)
 
 ## Installation
 
