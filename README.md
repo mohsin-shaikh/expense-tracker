@@ -21,8 +21,10 @@
 
 ## Upcoming Features
 
+- Landing Page
 - Setup Default Categories for new users
 - Report (Monthly, Yearly, Custom)
+- Import/Export CSV
 
 ## Installation
 
