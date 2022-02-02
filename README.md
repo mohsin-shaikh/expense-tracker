@@ -4,6 +4,10 @@
 
 ![alt text](./public/preview.png)
 
+## Demo hosted on Heroku
+
+[Demo Filament Expense Tracker](http://filament-expense-tracker.herokuapp.com)
+
 ## Features
 
 - Income
@@ -76,7 +80,7 @@ Run the dev server (the output will give the address):
 php artisan serve
 ```
 
-You're ready to go! Visit outlay in your browser, and login with:
+You're ready to go! Visit Expense Tracker in your browser, and login with:
 
 - **Username:** admin@gmail.com
 - **Password:** password
