@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        {{-- <meta name="color-scheme" content="dark light"> --}}
+
         <title>Expense Tracker</title>
 
         <!-- Fonts -->
@@ -23,14 +25,14 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('filament.auth.login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="fixed top-0 right-0 px-6 py-4">
                     @auth
-                        <a href="{{ url('/admin') }}" class="text-sm text-gray-200 dark:text-gray-100 underline">Dashboard</a>
+                        <a href="{{ url('/admin') }}" class="text-gray-700 dark:text-gray-100 underline">Dashboard</a>
                     @else
-                        <a href="{{ route('filament.auth.login') }}" class="text-sm text-gray-200 dark:text-gray-100 underline">Log in</a>
+                        <a href="{{ route('filament.auth.login') }}" class="text-gray-700 dark:text-gray-100 underline">Log in</a>
 
                         @if (Route::has('auth.register'))
-                            <a href="{{ route('auth.register') }}" class="ml-4 text-sm text-gray-200 dark:text-gray-100 underline">Register</a>
+                            <a href="{{ route('auth.register') }}" class="ml-4 text-gray-700 dark:text-gray-100 underline">Register</a>
                         @endif
                     @endauth
                 </div>
