@@ -3,14 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\IncomeResource\Pages;
-use App\Filament\Resources\IncomeResource\RelationManagers;
 use App\Models\Income;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use App\Models\Category;
 
 class IncomeResource extends Resource
 {
@@ -24,39 +22,57 @@ class IncomeResource extends Resource
     {
         return $form
             ->schema([
-                // Forms\Components\TextInput::make('user_id')
-                //     ->required(),
-                Forms\Components\TextInput::make('title')
-                ->required()
-                ->maxLength(255),
-                Forms\Components\BelongsToSelect::make('category_id')
-                    ->relationship('category', 'name')
-                    ->searchable()
-                    ->required(),
-                Forms\Components\TextInput::make('amount')
-                    ->numeric()
-                    ->minValue(1)
-                    ->required(),
-                Forms\Components\DatePicker::make('entry_date')
-                    ->required(),
-            ]);
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\BelongsToSelect::make('category_id')
+                            ->relationship('category', 'name')
+                            ->searchable()
+                            ->required(),
+                        Forms\Components\TextInput::make('amount')
+                            ->numeric()
+                            ->minValue(1)
+                            ->required(),
+                        Forms\Components\DatePicker::make('entry_date')
+                            ->required(),
+                    ])
+                    ->columns([
+                        'sm' => 1,
+                    ])
+                    ->columnSpan(2),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Placeholder::make('created_at')
+                            ->label('Created at')
+                            ->content(fn (?Income $record): string => $record ? $record->created_at->diffForHumans() : '-'),
+                        Forms\Components\Placeholder::make('updated_at')
+                            ->label('Last modified at')
+                            ->content(fn (?Income $record): string => $record ? $record->updated_at->diffForHumans() : '-'),
+                    ])
+                    ->columnSpan(1),
+            ])
+            ->columns(3);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                // Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('category.name'),
-                Tables\Columns\TextColumn::make('amount'),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('amount')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('entry_date')
+                    ->sortable()
                     ->label('Entry Date')
                     ->date(),
-                // Tables\Columns\TextColumn::make('created_at')
-                //     ->dateTime(),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //     ->dateTime(),
             ])
             ->filters([
                 //
