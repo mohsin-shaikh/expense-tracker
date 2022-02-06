@@ -9,10 +9,14 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class IncomeResource extends Resource
 {
     protected static ?string $model = Income::class;
+
+    protected static ?string $recordTitleAttribute = 'title';
 
     protected static ?string $navigationIcon = 'heroicon-o-trending-up';
 
@@ -93,5 +97,26 @@ class IncomeResource extends Resource
             'create' => Pages\CreateIncome::route('/create'),
             'edit' => Pages\EditIncome::route('/{record}/edit'),
         ];
+    }
+
+    protected static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['category']);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['title', 'category.name', 'amount'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = [];
+
+        if ($record->category) {
+            $details['Category'] = $record->category->name;
+        }
+
+        return $details;
     }
 }
