@@ -8,7 +8,7 @@
         "php": "^7.3|^8.0",
         "akaunting/laravel-money": "^1.2",
         "doctrine/dbal": "^3.3",
-        "filament/filament": "^2.9",
+        "filament/filament": "^2.10",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
