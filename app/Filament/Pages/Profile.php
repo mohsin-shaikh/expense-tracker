@@ -85,7 +85,8 @@ class Profile extends Page implements HasForms
                     Forms\Components\TextInput::make('email')
                         ->label('Email Address')
                         ->required(),
-                ])->extraAttributes(['class' => 'bg-white']),
+                ])
+                ->extraAttributes(['class' => 'bg-white dark:bg-gray-800']),
             Forms\Components\Section::make('Configuration')
                 ->columns(2)
                 ->schema([
@@ -99,7 +100,8 @@ class Profile extends Page implements HasForms
                         ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
                         ->getOptionLabelUsing(fn ($value): ?string => Country::find($value)?->name)
                         ->required(),
-                ])->extraAttributes(['class' => 'bg-white']),
+                ])
+                ->extraAttributes(['class' => 'bg-white dark:bg-gray-800']),
             Forms\Components\Section::make('Update Password')
                 ->columns(2)
                 ->schema([
@@ -125,7 +127,8 @@ class Profile extends Page implements HasForms
                                 ])
                                 ->autocomplete('new-password'),
                         ]),
-                ])->extraAttributes(['class' => 'bg-white']),
+                ])
+                ->extraAttributes(['class' => 'bg-white dark:bg-gray-800']),
         ];
     }
 }

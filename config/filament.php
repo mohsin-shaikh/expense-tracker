@@ -28,6 +28,20 @@ return [
 
     'path' => env('FILAMENT_PATH', 'admin'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filament Core Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the path which Filament will use to load it's core routes and assets.
+    | You may change it if it conflicts with your other routes.
+    |
+    */
+
+    'core_path' => env('FILAMENT_CORE_PATH', 'filament'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Filament Domain
@@ -51,6 +65,17 @@ return [
     */
 
     'home_url' => '/',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Brand Name
+    |--------------------------------------------------------------------------
+    |
+    | This will be displayed on the login page and in the sidebar's header.
+    |
+    */
+
+    'brand' => env('APP_NAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -141,10 +166,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Dark mode
+    |--------------------------------------------------------------------------
+    |
+    | By enabling this feature, your users are able to select between a light
+    | and dark appearance for the admin panel, or let their system decide.
+    |
+    */
+
+    'dark_mode' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Layout
     |--------------------------------------------------------------------------
     |
-    | This is the configuration for the general appearance of the admin panel.
+    | This is the configuration for the general layout of the admin panel.
     |
     | You may configure the max content width from `xl` to `7xl`, or `full`
     | for no max width.
@@ -160,13 +197,24 @@ return [
         'footer' => [
             'should_show_logo' => true,
         ],
-        'max_content_width' => 'full',
+        'max_content_width' => null,
         'tables' => [
             'actions' => [
                 'type' => \Filament\Tables\Actions\LinkAction::class,
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Favicon
+    |--------------------------------------------------------------------------
+    |
+    | This is the path to the favicon used for pages in the admin panel.
+    |
+    */
+
+    'favicon' => null,
 
     /*
     |--------------------------------------------------------------------------
