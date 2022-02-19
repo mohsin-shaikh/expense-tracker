@@ -197,7 +197,7 @@ return [
         'footer' => [
             'should_show_logo' => true,
         ],
-        'max_content_width' => null,
+        'max_content_width' => 'full',
         'tables' => [
             'actions' => [
                 'type' => \Filament\Tables\Actions\LinkAction::class,
