@@ -17,7 +17,7 @@ trait HasActivity
     {
         static::created(function($model) {
             $model->activity()->create([
-                'user_id' => Auth::id()
+                'user_id' => Auth::id(),
             ]);
         });
 

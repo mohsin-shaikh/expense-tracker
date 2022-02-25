@@ -25,6 +25,8 @@ class ExpenseFactory extends Factory
             'title' => $this->faker->sentence,
             'amount' => $this->faker->randomFloat(2, 100, 2000),
             'entry_date' => $this->faker->dateTimeBetween('-2 months'),
+            // 'user_id' => 1,
+            // 'category_id' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

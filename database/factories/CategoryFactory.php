@@ -24,6 +24,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $this->faker->unique()->word,
             'is_active' => true,
+            // 'user_id' => 1
         ];
     }
 }
