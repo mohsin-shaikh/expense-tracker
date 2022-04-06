@@ -203,6 +203,13 @@ return [
                 'type' => \Filament\Tables\Actions\LinkAction::class,
             ],
         ],
+        'sidebar' => [
+            'is_collapsible_on_desktop' => true,
+        ],
+        'notifications' => [
+            'vertical_alignment' => 'top',
+            'alignment' => 'center',
+        ],
     ],
 
     /*
